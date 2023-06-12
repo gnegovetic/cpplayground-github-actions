@@ -12,6 +12,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Docker
         uses: docker/setup-buildx-action@v2
-      - name: Build Docker container
+      - name: Create Docker container
         run: docker build --tag cpp_builder .
-
+      - name: Build
+        run: |
+          mkdir build && cd build
+          docker run --rm -v $(pwd):/build -w /build cpp_builder cmake ..
+          docker run --rm -v $(pwd):/build -w /build cpp_builder cmake --build .
+        
