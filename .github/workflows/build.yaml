@@ -19,4 +19,12 @@ jobs:
           mkdir -p build
           docker run --rm -v $(pwd):/app -w /app/build cpp_builder cmake ..
           docker run --rm -v $(pwd):/app -w /app/build cpp_builder cmake --build .
+      - name: Run the app
+        run: ./build/helloWorld 1234 > out.txt
+      - name: Save the output
+        uses: actions/upload-artifact@v3
+        with:
+          name: Output
+          path: out.txt
+          retention-days: 1
         
