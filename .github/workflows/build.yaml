@@ -16,7 +16,7 @@ jobs:
         run: docker build --tag cpp_builder .
       - name: Build
         run: |
-          mkdir build && cd build
-          docker run --rm -v $(pwd):/build -w /build cpp_builder cmake ..
-          docker run --rm -v $(pwd):/build -w /build cpp_builder cmake --build .
+          mkdir -p build && cd build
+          docker run --rm -v $(pwd):/app/build -w /app/build cpp_builder cmake ..
+          docker run --rm -v $(pwd):/app/build -w /app/build cpp_builder cmake --build .
         
