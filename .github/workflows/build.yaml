@@ -35,5 +35,7 @@ jobs:
       with: 
         name: HelloWorld
     - name: Run the app
-      run: ./build/helloWorld 1234
+      run: |
+        chmod +x ./helloWorld
+        ./helloWorld 1234
         
