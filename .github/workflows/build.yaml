@@ -1,6 +1,11 @@
 name: C++ Docker build
 on:
   workflow_dispatch:
+    inputs:
+      my_value:
+        description: Provide input parameter
+        required: false
+        default: 1234
   push:
     branches: ["**"]
 jobs:
@@ -37,5 +42,5 @@ jobs:
     - name: Run the app
       run: |
         chmod +x ./helloWorld
-        ./helloWorld 1234
+        ./helloWorld ${{ github.event.inputs.my_value }}
         
