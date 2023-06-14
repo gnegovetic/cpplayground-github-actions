@@ -5,7 +5,7 @@ on:
       my_value:
         description: Provide input parameter
         required: false
-        default: 1234
+        default: '1234'
   push:
     branches: ["**"]
 jobs:
